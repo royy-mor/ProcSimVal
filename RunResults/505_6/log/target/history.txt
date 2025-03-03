@@ -1,0 +1,12 @@
+Linux procsimval 6.8.0-47-generic #47-Ubuntu SMP PREEMPT_DYNAMIC Fri Sep 27 21:40:26 UTC 2024 x86_64
+
+---
+2025-03-03-21-28-30-835444 /tmp/vtune_profiler_2025.0.1.629235/bin64/amplxe-runss --result-dir /tmp/amplxe-results-cc/cc_procsimval-chameleon/tmpfrxqmr1d/505_6 --option-file /tmp/cc@procsimval-chameleon_505_6.opts 
+/tmp/vtune_profiler_2025.0.1.629235/bin64
+Product name: Intel VTune Profiler, build 629235 (Release)
+
+---
+2025-03-03-21-28-31-338762 /tmp/vtune_profiler_2025.0.1.629235/bin64/amplxe-runss -dump-vdso -r /tmp/amplxe-results-cc/cc_procsimval-chameleon/tmpfrxqmr1d/505_6 --tmp-dir /tmp/tmpfrxqmr1d 
+/tmp/vtune_profiler_2025.0.1.629235/bin64
+Product name: Intel VTune Profiler, build 629235 (Release)
+
