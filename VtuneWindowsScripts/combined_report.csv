@@ -1,0 +1,41 @@
+Report,Metric,Value
+505_1000_0,Elapsed Time,177.994s
+505_1000_0,CPI Rate,1.241
+505_1000_0,Retiring,19.0% of Pipeline Slots
+505_1000_0,Front-End Bound,29.7% of Pipeline Slots
+505_1000_0,Bad Speculation,27.8% of Pipeline Slots
+505_1000_0,Memory Bound,9.4% of Pipeline Slots
+505_1000_0,Core Bound,14.1% of Pipeline Slots
+505_1000_0,Average CPU Frequency,997.379 MHz
+505_1000_1,Elapsed Time,178.398s
+505_1000_1,CPI Rate,1.244
+505_1000_1,Retiring,18.8% of Pipeline Slots
+505_1000_1,Front-End Bound,30.0% of Pipeline Slots
+505_1000_1,Bad Speculation,28.2% of Pipeline Slots
+505_1000_1,Memory Bound,9.3% of Pipeline Slots
+505_1000_1,Core Bound,13.8% of Pipeline Slots
+505_1000_1,Average CPU Frequency,997.729 MHz
+505_1000_2,Elapsed Time,178.176s
+505_1000_2,CPI Rate,1.243
+505_1000_2,Retiring,18.9% of Pipeline Slots
+505_1000_2,Front-End Bound,29.7% of Pipeline Slots
+505_1000_2,Bad Speculation,27.7% of Pipeline Slots
+505_1000_2,Memory Bound,9.4% of Pipeline Slots
+505_1000_2,Core Bound,14.3% of Pipeline Slots
+505_1000_2,Average CPU Frequency,997.695 MHz
+505_1000_3,Elapsed Time,178.936s
+505_1000_3,CPI Rate,1.248
+505_1000_3,Retiring,19.0% of Pipeline Slots
+505_1000_3,Front-End Bound,30.2% of Pipeline Slots
+505_1000_3,Bad Speculation,27.9% of Pipeline Slots
+505_1000_3,Memory Bound,9.2% of Pipeline Slots
+505_1000_3,Core Bound,13.7% of Pipeline Slots
+505_1000_3,Average CPU Frequency,997.616 MHz
+505_1000_4,Elapsed Time,178.226s
+505_1000_4,CPI Rate,1.243
+505_1000_4,Retiring,18.8% of Pipeline Slots
+505_1000_4,Front-End Bound,30.0% of Pipeline Slots
+505_1000_4,Bad Speculation,28.0% of Pipeline Slots
+505_1000_4,Memory Bound,9.2% of Pipeline Slots
+505_1000_4,Core Bound,14.0% of Pipeline Slots
+505_1000_4,Average CPU Frequency,997.706 MHz
