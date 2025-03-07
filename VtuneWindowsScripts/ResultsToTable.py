@@ -15,12 +15,32 @@ def parse_output(output):
         'Average CPU Frequency': r'Average CPU Frequency: (.*)',
     }
 
-    data = []
+    data = {
+        'Report': None,
+        'Elapsed Time (s)': None,
+        'CPI Rate': None,
+        'Retiring (%)': None,
+        'Front-End Bound (%)': None,
+        'Bad Speculation (%)': None,
+        'Memory Bound (%)': None,
+        'Core Bound (%)': None,
+        'Average CPU Frequency (GHz)': None,
+    }
+
     for line in output.splitlines():
         for metric, pattern in patterns.items():
             match = re.search(pattern, line)
             if match:
-                data.append({'Metric': metric, 'Value': match.group(1).strip()})
+                value = match.group(1).strip()
+                # Remove units from the value
+                if metric in ['Retiring', 'Front-End Bound', 'Bad Speculation', 'Memory Bound', 'Core Bound']:
+                    data[f'{metric} (%)'] = value.split('%')[0]
+                elif metric == 'Elapsed Time':
+                    data[f'{metric} (s)'] = value.split('s')[0]
+                elif metric == 'Average CPU Frequency':
+                    data[f'{metric} (GHz)'] = value.split()[0]
+                else:
+                    data[metric] = value.split()[0]
 
     return data
 
@@ -30,36 +50,30 @@ def run_command(command):
     if result.returncode != 0:
         print(f"Error running command: {result.stderr.decode('utf-8')}")
         return None
-    print(result)
     return result.stdout.decode('utf-8')
 
 def main():
     # List of report types
-    report_types = ['505_1000_0', '505_1000_1', '505_1000_2', '505_1000_3', '505_1000_4']  # Replace with your actual report types
+    bench = 505
+    report_types = [f'{bench}_{mhz}_{iter}' if mhz not in [1400, 2200] else "" for mhz in range(1000, 2601, 100) for iter in range(5)]
+    for i in range(5) report_types.append(f'{bench}_3700_{i}')
 
     combined_data = []
     for report_type in report_types:
         # Command to run (replace with your actual command)
-        # Use double quotes around the entire command and escape any inner double quotes
-        # command = f'powershell -Command "& {{ .\\get_report.bat summary \'{report_type}\" | Select-String \"Memory Bound\", \"Front-End Bound\", \"Core Bound\", \"Bad Speculation\", \"Retiring\", \"Elapsed Time\", \"CPI Rate\", \"Average CPU Freq\" }}"'
         command = f'powershell -Command "& {{ .\\get_summary.bat {report_type}}}"'
-        
 
         output = run_command(command)
-        print(output)
         if output:
             data = parse_output(output)
-            
-            # Add report name to each entry
-            for entry in data:
-                entry['Report'] = report_type
-                combined_data.append(entry)
+            data['Report'] = report_type
+            combined_data.append(data)
 
             print(f"Processed report: {report_type}")
 
     # Save combined data to CSV
+    fieldnames = ['Report', 'Elapsed Time (s)', 'CPI Rate', 'Retiring (%)', 'Front-End Bound (%)', 'Bad Speculation (%)', 'Memory Bound (%)', 'Core Bound (%)', 'Average CPU Frequency (GHz)']
     with open('combined_report.csv', 'w', newline='') as csvfile:
-        fieldnames = ['Report', 'Metric', 'Value']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         
         writer.writeheader()
