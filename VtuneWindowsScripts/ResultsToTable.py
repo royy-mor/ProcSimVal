@@ -56,7 +56,8 @@ def main():
     # List of report types
     bench = 505
     report_types = [f'{bench}_{mhz}_{iter}' if mhz not in [1400, 2200] else "" for mhz in range(1000, 2601, 100) for iter in range(5)]
-    for i in range(5) report_types.append(f'{bench}_3700_{i}')
+    for i in range(5):
+        report_types.append(f'{bench}_3700_{i}')
 
     combined_data = []
     for report_type in report_types:
