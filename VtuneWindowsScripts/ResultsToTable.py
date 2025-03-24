@@ -2,6 +2,8 @@ import subprocess
 import re
 import csv
 
+USE_EXISTING = "C:\\Users\\roymo\\Documents\\ProcSimVal\\VtuneWindowsScripts\\combined_report.csv"
+
 def parse_output(output):
     # Regular expressions to match each metric
     patterns = {
@@ -54,10 +56,14 @@ def run_command(command):
 
 def main():
     # List of report types
-    bench = 505
-    report_types = [f'{bench}_{mhz}_{iter}' if mhz not in [1400, 2200] else "" for mhz in range(1000, 2601, 100) for iter in range(5)]
-    for i in range(5):
-        report_types.append(f'{bench}_3700_{i}')
+    benches = [500, 502, 505, 520, 523, 531, 541, 548, 557]
+    freq_range = list(range(1000, 2601, 100)) + [3700]
+    freq_range.remove(1400)
+    freq_range.remove(2200)
+    report_types = [f'{bench}_{mhz}_{iter}'
+                    for bench in benches 
+                    for mhz in freq_range 
+                    for iter in range(5)]
 
     combined_data = []
     for report_type in report_types:

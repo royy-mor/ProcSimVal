@@ -2,8 +2,7 @@ import os
 import subprocess
 from pathlib import Path
 
-# Configuration
-FREQUENCIES = [2700, 2800, 2900, 3000, 3100, 3200, 3300, 3400, 3500, 3600]
+FREQUENCIES = [1400, 2200, 2700, 2800, 2900, 3000, 3100, 3200, 3300, 3400, 3500, 3600]
 RUNS_PER_FREQ = 5
 BASE_DIR = Path(r"C:\Users\roymo\Documents\ProcSimVal\RunResults")
 REMOTE_USER = "cc"
@@ -35,11 +34,10 @@ def main():
     for freq in FREQUENCIES:
         prefix = f"505_{freq}_"
         
-        # Set frequency once per frequency group
         try:
             ssh_command(f"~/bench_exe/scripts/set_freq_cache.sh {freq}")
         except subprocess.CalledProcessError:
-            continue  # Skip this frequency if setup fails
+            continue
 
         for run in range(RUNS_PER_FREQ):
             target_dir = find_available_folder(BASE_DIR, prefix)
