@@ -1,2 +1,0 @@
-/tmp/vtune_profiler_2025.0.1.629235/bin64/amplxe-runss -dump-vdso -r /tmp/amplxe-results-cc/cc_procsimval-chameleon/tmp28g4xn03/505_3 --tmp-dir /tmp/tmp28g4xn03 
-/tmp/vtune_profiler_2025.0.1.629235/bin64
